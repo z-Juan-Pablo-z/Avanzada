@@ -1,8 +1,11 @@
-export class ControladorHabitacion{
+export class ControladorReserva{
 
-    constructor(){}
+    constructor(){
 
-    buscarHabitaciones(request,response){
+    }
+
+    //estos metodos llevaran la logica y respuesta 
+    buscarReservas(request,response){
         try {
             //no programa ni el 300 ni el 500
             //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
@@ -20,14 +23,14 @@ export class ControladorHabitacion{
                 "estado" : false
             })
         }
+        //response.send("Estoy buscando reservas desde el controlador")
     }
-
-    buscarHabitacionPorId(request,response){
+    buscarReservasPorId(request,response){
         try {
             //no programa ni el 300 ni el 500
             //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
             response.status(200).json({
-                "mensaje" : "Se encontro la habitacion encontrada",
+                "mensaje" : "exito en la consulta",
                 "datos" : "Aqui van los datos de Habitaciones",
                 "estado" : true
             })
@@ -40,37 +43,16 @@ export class ControladorHabitacion{
                 "estado" : false
             })
         }
-        //response.send("estoy buscando una habitacion por id desde el controlador")
-    }
+        //response.send("Estoy buscando una reserva por id desde el controlador")
 
-    registrarHabitacion(request,response){
+    }
+    registrarReserva(request,response){
         try {
             //no programa ni el 300 ni el 500
             //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
             response.status(200).json({
-                "mensaje" : "Se registro correctamente",
-                "datos" : null,
-                "estado" : true
-            })
-        } catch (error) {
-            //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
-            //response.send("estoy buscando habitaciones desde el controlador")
-            response.status(400).json({
-                "mensaje" : "Fallo al registrar "+error,
-                "datos" : null,
-                "estado" : false
-            })
-        }
-        //response.send("estoy agregando desde el controlador")
-    }
-
-    editarHabitacion(request,response){
-        try {
-            //no programa ni el 300 ni el 500
-            //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
-            response.status(200).json({
-                "mensaje" : "Exito editando el registro",
-                "datos" : null,
+                "mensaje" : "exito en la consulta",
+                "datos" : "Aqui van los datos de Habitaciones",
                 "estado" : true
             })
         } catch (error) {
@@ -82,8 +64,49 @@ export class ControladorHabitacion{
                 "estado" : false
             })
         }
-        //response.send("estoy editando desde el controlador")
+        //response.send("Estoy registrando una reserva desde el controlador")
+
     }
+    editarReserva(request,response){
+        try {
+            //no programa ni el 300 ni el 500
+            //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
+            response.status(200).json({
+                "mensaje" : "exito en la consulta",
+                "datos" : "Aqui van los datos de Habitaciones",
+                "estado" : true
+            })
+        } catch (error) {
+            //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
+            //response.send("estoy buscando habitaciones desde el controlador")
+            response.status(400).json({
+                "mensaje" : "Fallo en la consulta "+error,
+                "datos" : null,
+                "estado" : false
+            })
+        }
+        //response.send("Estoy editando una reserva desde el controlador")
 
+    }
+    borrarReserva(request,response){
+        try {
+            //no programa ni el 300 ni el 500
+            //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
+            response.status(200).json({
+                "mensaje" : "exito en la consulta",
+                "datos" : "Aqui van los datos de Habitaciones",
+                "estado" : true
+            })
+        } catch (error) {
+            //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
+            //response.send("estoy buscando habitaciones desde el controlador")
+            response.status(400).json({
+                "mensaje" : "Fallo en la consulta "+error,
+                "datos" : null,
+                "estado" : false
+            })
+        }
+        //response.send("Estoy eliminando una reserva desde el controlador")
 
+    }
 }

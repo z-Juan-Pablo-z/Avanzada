@@ -1,24 +1,30 @@
 import express from 'express'
-import {rutas} from '../Routes/rutas.js'
-export class ServidorAPI{
-    
-    constructor(){
-        this.app = express()    //ATRIBUTO DE UNA CLASE
-        this.atenderPeticiones()
 
+import {rutasPersonalizadas} from '../Routes/rutas.js'
+import { conectarConMongoo } from '../Database/conexion.js'
+
+export class ServidorAPI{
+
+
+    constructor(){
+        this.app = express()
+        this.conectarConBD()
+        this.atenderPeticiones()
     }
-    //METODOS DE LA CLASE 
+
+    //Metodos de la clase ServidorAPI
     despertarServidor(){
         this.app.listen(process.env.PORT,function(){
-            console.log("Exito prendiendo-me el servidor: "+process.env.PORT);
+            console.log("exito encendiendo el servidor: "+process.env.PORT)
         })
     }
 
     atenderPeticiones(){
-        this.app.use('/',rutas)
+        this.app.use('/',rutasPersonalizadas)
     }
 
     conectarConBD(){
-
+        conectarConMongoo();
     }
+
 }

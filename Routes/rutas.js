@@ -1,18 +1,19 @@
 import express from 'express'
-import { ControladorHabitacion} from '../Controllers/controladorHabitacion.js'
-import {ControladorReserva} from '../Controllers/ControladorReserva.js'
 
-let controladorHabitacion = new ControladorHabitacion();//usando el controlador
-let controladorReserva = new ControladorReserva();
+import { ControladorHabitacion } from '../Controllers/ControladorHabitacion.js'
+import {ControladorReserva} from '../Controllers/ControladorReservas.js'
+let controladorReserva = new ControladorReserva()
+let controladorHabitacion=new ControladorHabitacion() //usando el controlador
 
-export let rutas = express.Router()
-rutas.get('/hotelesnick/habitaciones',controladorHabitacion.buscarHabitaciones)
-rutas.get('/hotelesnick/habitacion/:id',controladorHabitacion.buscarHabitacionPorId)
-rutas.post('/hotelesnick/habitacion', controladorHabitacion.registrarHabitacion)
-rutas.put('/hotelesnick/habitacion', controladorHabitacion.editarHabitacion)
+export let rutasPersonalizadas=express.Router()
 
-rutas.get('/hotelesnick/reservas',controladorReserva.buscarReservas)
-rutas.get('/hotelesnick/reserva/:id',controladorReserva.buscarReservasPorId)
-rutas.post('/hotelesnick/reserva', controladorReserva.registrarReserva)
-rutas.put('/hotelesnick/reserva', controladorReserva.editarReserva)
-rutas.delete('/hotelesnick/reserva/',controladorReserva.borrarReserva)
+rutasPersonalizadas.get('/hotelesnick/habitaciones',controladorHabitacion.buscarHabitaciones)
+rutasPersonalizadas.get('/hotelesnick/habitacion/:id',controladorHabitacion.buscarHabitacionPorId)
+rutasPersonalizadas.post('/hotelesnick/habitacion',controladorHabitacion.registrarHabitacion)
+rutasPersonalizadas.put('/hotelesnick/habitacion',controladorHabitacion.editarHabitacion)
+
+rutasPersonalizadas.get('/hotelesnick/reservas',controladorReserva.buscarReservas)
+rutasPersonalizadas.get('/hotelesnick/reserva/:id',controladorReserva.buscarReservasPorId)
+rutasPersonalizadas.post('/hotelesnick/reserva', controladorReserva.registrarReserva)
+rutasPersonalizadas.put('/hotelesnick/reserva', controladorReserva.editarReserva)
+rutasPersonalizadas.delete('/hotelesnick/reserva/',controladorReserva.borrarReserva)
