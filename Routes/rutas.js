@@ -8,12 +8,12 @@ let controladorHabitacion=new ControladorHabitacion() //usando el controlador
 export let rutasPersonalizadas=express.Router()
 
 rutasPersonalizadas.get('/hotelesnick/habitaciones',controladorHabitacion.buscarHabitaciones)
-rutasPersonalizadas.get('/hotelesnick/habitacion/:id',controladorHabitacion.buscarHabitacionPorId)
+rutasPersonalizadas.get('/hotelesnick/habitacion/:idHabitacion',controladorHabitacion.buscarHabitacionPorId)
 rutasPersonalizadas.post('/hotelesnick/habitacion',controladorHabitacion.registrarHabitacion)
-rutasPersonalizadas.put('/hotelesnick/habitacion',controladorHabitacion.editarHabitacion)
+rutasPersonalizadas.put('/hotelesnick/habitacion/:idHabitacion',controladorHabitacion.editarHabitacion)
 
 rutasPersonalizadas.get('/hotelesnick/reservas',controladorReserva.buscarReservas)
-rutasPersonalizadas.get('/hotelesnick/reserva/:id',controladorReserva.buscarReservasPorId)
+rutasPersonalizadas.get('/hotelesnick/reserva/:idReserva',controladorReserva.buscarReservasPorId)
 rutasPersonalizadas.post('/hotelesnick/reserva', controladorReserva.registrarReserva)
-rutasPersonalizadas.put('/hotelesnick/reserva', controladorReserva.editarReserva)
-rutasPersonalizadas.delete('/hotelesnick/reserva/',controladorReserva.borrarReserva)
+rutasPersonalizadas.put('/hotelesnick/reserva/:idReserva', controladorReserva.editarReserva)
+rutasPersonalizadas.delete('/hotelesnick/reserva/:idReserva',controladorReserva.borrarReserva)

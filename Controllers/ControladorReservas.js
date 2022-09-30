@@ -26,11 +26,13 @@ export class ControladorReserva{
         //response.send("Estoy buscando reservas desde el controlador")
     }
     buscarReservasPorId(request,response){
+        let id_rq = request.params.idReserva
+        console.log(id_rq);
         try {
             //no programa ni el 300 ni el 500
             //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
             response.status(200).json({
-                "mensaje" : "exito en la consulta",
+                "mensaje" : "exito en la consulta "+id_rq,
                 "datos" : "Aqui van los datos de Habitaciones",
                 "estado" : true
             })
@@ -47,6 +49,8 @@ export class ControladorReserva{
 
     }
     registrarReserva(request,response){
+        let datosReserva = request.body
+        console.log(datosReserva)
         try {
             //no programa ni el 300 ni el 500
             //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
@@ -68,12 +72,15 @@ export class ControladorReserva{
 
     }
     editarReserva(request,response){
+        let id_rq = request.params.idReserva
+        let datos_rq = request.body
+        console.log(id_rq," ",datos_rq);
         try {
             //no programa ni el 300 ni el 500
             //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
             response.status(200).json({
-                "mensaje" : "exito en la consulta",
-                "datos" : "Aqui van los datos de Habitaciones",
+                "mensaje" : "exito en la consulta "+id_rq,
+                "datos" : datos_rq,
                 "estado" : true
             })
         } catch (error) {
@@ -89,11 +96,13 @@ export class ControladorReserva{
 
     }
     borrarReserva(request,response){
+        let id_rq = request.params.idReserva
+        console.log(id_rq);
         try {
             //no programa ni el 300 ni el 500
             //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
             response.status(200).json({
-                "mensaje" : "exito en la consulta",
+                "mensaje" : "exito en la consulta "+id_rq,
                 "datos" : "Aqui van los datos de Habitaciones",
                 "estado" : true
             })

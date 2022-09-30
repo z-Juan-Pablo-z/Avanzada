@@ -9,6 +9,7 @@ export class ServidorAPI{
     constructor(){
         this.app = express()
         this.conectarConBD()
+        this.activarBody()
         this.atenderPeticiones()
     }
 
@@ -25,6 +26,10 @@ export class ServidorAPI{
 
     conectarConBD(){
         conectarConMongoo();
+    }
+
+    activarBody(){
+        this.app.use(express.json())
     }
 
 }

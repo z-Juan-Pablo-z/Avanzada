@@ -23,11 +23,13 @@ export class ControladorHabitacion{
     }
 
     buscarHabitacionPorId(request,response){
+        let id_rq= request.params.idHabitacion //recibo el id de la peticion
+        // console.log("el id es: "+id_rq)
         try {
             //no programa ni el 300 ni el 500
             //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
             response.status(200).json({
-                "mensaje" : "Se encontro la habitacion encontrada",
+                "mensaje" : "Se encontro la habitacion encontrada"+id_rq,
                 "datos" : "Aqui van los datos de Habitaciones",
                 "estado" : true
             })
@@ -44,6 +46,7 @@ export class ControladorHabitacion{
     }
 
     registrarHabitacion(request,response){
+        let datosHabitacion = request.body
         try {
             //no programa ni el 300 ni el 500
             //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
@@ -65,12 +68,15 @@ export class ControladorHabitacion{
     }
 
     editarHabitacion(request,response){
+        let id_rq = request.params.idHabitacion
+        let datosEdit = request.body
+        console.log(id_rq, " ",datosEdit);
         try {
             //no programa ni el 300 ni el 500
             //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
             response.status(200).json({
-                "mensaje" : "Exito editando el registro",
-                "datos" : null,
+                "mensaje" : "Exito editando el registro "+id_rq,
+                "datos" : datosEdit,
                 "estado" : true
             })
         } catch (error) {
