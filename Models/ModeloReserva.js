@@ -6,6 +6,7 @@ const EsquemaReserva = new Schema({
         requred:true,
         type:String
     },
+    //fechas son AAAA-MM-DD
     fechaEntrada:{
         requred:true,
         type:Date
