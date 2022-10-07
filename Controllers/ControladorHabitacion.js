@@ -1,14 +1,16 @@
+import { ServicioHabitacion } from "../services/ServicioHabitacion.js"
 export class ControladorHabitacion{
 
     constructor(){}
 
-    buscarHabitaciones(request,response){
+    async buscarHabitaciones(request,response){
+        let objServicioH = new ServicioHabitacion()
         try {
             //no programa ni el 300 ni el 500
             //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
             response.status(200).json({
                 "mensaje" : "exito en la consulta",
-                "datos" : "Aqui van los datos de Habitaciones",
+                "datos" : await objServicioH.buscarHabitaciones(),
                 "estado" : true
             })
         } catch (error) {
@@ -45,9 +47,11 @@ export class ControladorHabitacion{
         //response.send("estoy buscando una habitacion por id desde el controlador")
     }
 
-    registrarHabitacion(request,response){
-        let datosHabitacion = request.body
+    async registrarHabitacion(request,response){
+        let datosHabitacion = request.body;
+        let objServicioH = new ServicioHabitacion();
         try {
+            await objServicioH.agregarHabitacion(datosHabitacion);
             //no programa ni el 300 ni el 500
             //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
             response.status(200).json({
