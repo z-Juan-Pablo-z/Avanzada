@@ -52,14 +52,22 @@ export class ControladorHabitacion{
         let datosHabitacion = request.body;
         let objServicioH = new ServicioHabitacion();
         try {
-            await objServicioH.agregarHabitacion(datosHabitacion);
+            // console.log(datosHabitacion);
+            if( datosHabitacion.numeroMaximoPersonas < 8 ){
+                await objServicioH.agregarHabitacion(datosHabitacion);
+                response.status(200).json({
+                    "mensaje" : "Se registro correctamente",
+                    "datos" : null
+                });
+            }else{
+                //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
+                response.status(400).json({
+                    "mensaje" : "No hay tanto epacio ",
+                    "datos" : null
+                });
+            }
             //no programa ni el 300 ni el 500
-            //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
-            response.status(200).json({
-                "mensaje" : "Se registro correctamente",
-                "datos" : null,
-                "estado" : true
-            })
+
         } catch (error) {
             //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
             //response.send("estoy buscando habitaciones desde el controlador")

@@ -25,7 +25,7 @@ const EsquemaReserva = new Schema({
     },
     //costoReserva (entrada,salida calculo de fechas)
     costoReserva:{
-        requred:true,
+        requred:false,
         type:Number
     }
 });
