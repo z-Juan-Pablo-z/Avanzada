@@ -119,29 +119,102 @@ export class ControladorReserva{
         let id_rq = request.params.idReserva
         let datos_rq = request.body
         let objReserva = new ServicioReserva()
+        /*
+            // let objServicioH = new ServicioHabitacion()
+            // let datos_habitacion = {};
+            // let entrada,salida = "";
+            // let numeroMaximoPersonas,costoHabitacion = 0;
+            // let valFechas = "null";
+            // let valPersonas = "null";
+            // if (datos_rq.idHabitacion) {
+            //     datos_habitacion = await objServicioH.buscarHabitacionPorId(datos_rq.idHabitacion);
+            //     numeroMaximoPersonas = datos_habitacion.numeroMaximoPersonas;
+            //     costoHabitacion = datos_habitacion.valorNoche;
+            // }
+            // let datos_reserva = await objReserva.buscarReservaPorId(id_rq);
+            // if(datos_reserva){
+            //     if(datos_rq.fechaEntrada && datos_rq.fechaSalida){
+            //         const diffInDays = Math.floor((datos_rq.fechaSalida - datos_rq.fechaEntrada) / (1000 * 60 * 60 * 24));
+            //         if(diffInDays > 0){
+            //             valFechas = true;
+            //         }else{
+            //             valFechas = false;
+            //         }
+            //     }else if(datos_rq.fechaEntrada){
+            //         const diffInDays = Math.floor((datos_habitacion.fechaSalida - datos_rq.fechaEntrada) / (1000 * 60 * 60 * 24));
+            //         if(diffInDays > 0){
+            //             valFechas = true;
+            //         }else{
+            //             valFechas = false;
+            //         }
+            //     }else if(datos_rq.fechaSalida){
+            //         const diffInDays = Math.floor((datos_rq.fechaSalida - datos_habitacion.fechaEntrada) / (1000 * 60 * 60 * 24));
+            //         if(diffInDays > 0){
+            //             valFechas = true;
+            //         }else{
+            //             valFechas = false;
+            //         }
 
-        console.log(id_rq," ",datos_rq);
-        try {
-            
-            
-            await objReserva.editarReserva(id_rq,datos_rq)
+            //     }
 
-            //no programa ni el 300 ni el 500
-            //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
-            response.status(200).json({
-                "mensaje" : "exito en la consulta "+id_rq,
-                "datos" : datos_rq,
-                "estado" : true
-            })
-        } catch (error) {
-            //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
-            //response.send("estoy buscando habitaciones desde el controlador")
-            response.status(400).json({
-                "mensaje" : "Fallo en la consulta "+error,
-                "datos" : null,
-                "estado" : false
-            })
-        }
+            //     if(datos_rq.numeroAdultos && datos_rq.numeroNinos){
+            //         let numero_personas = Number(datos_rq.numeroAdultos)+Number(datos_rq.numeroNinos);
+            //         if(numero_personas<=numeroMaximoPersonas){
+            //             valPersonas = true;
+            //         }else{
+            //             valPersonas = false;
+            //         }
+            //     }else if(datos_rq.numeroAdultos){
+            //         let numero_personas = Number(datos_rq.numeroAdultos)+Number(datos_reserva.numeroNinos);
+            //         if(numero_personas<=numeroMaximoPersonas){
+            //             valPersonas = true;
+            //         }else{
+            //             valPersonas = false;
+            //         }
+            //     }else if(datos_rq.numeroNinos){
+            //         let numero_personas = Number(datos_reserva.numeroAdultos)+Number(datos_rq.numeroNinos);
+            //         if(numero_personas<=numeroMaximoPersonas){
+            //             valPersonas = true;
+            //         }else{
+            //             valPersonas = false;
+            //         }
+
+            //     }
+
+            //     if(valFechas && valFechas != "null"){
+            //         if(valPersonas && valPersonas != "null"){
+
+            //         }else if(valPersonas != "null"){
+
+            //         }else{
+
+            //         }
+            //     }else if(valPersonas && valPersonas != "null"){
+
+            //     }
+
+        */
+            try {
+                
+                
+                await objReserva.editarReserva(id_rq,datos_rq)
+                //no programa ni el 300 ni el 500
+                //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
+                response.status(200).json({
+                    "mensaje" : "exito en la consulta "+id_rq,
+                    "datos" : datos_rq,
+                    "estado" : true
+                })
+            } catch (error) {
+                //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
+                //response.send("estoy buscando habitaciones desde el controlador")
+                response.status(400).json({
+                    "mensaje" : "Fallo en la consulta "+error,
+                    "datos" : null,
+                    "estado" : false
+                })
+            }
+        
         //response.send("Estoy editando una reserva desde el controlador")
 
     }
