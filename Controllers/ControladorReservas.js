@@ -53,13 +53,12 @@ export class ControladorReserva{
 
     }
     async registrarReserva(request,response){
-        let objReserva = new ServicioReserva()
         let datosReserva = request.body
+        let objReserva = new ServicioReserva()
         let objServicioH = new ServicioHabitacion()
 
         //valor de la noche , numero maximo personas(calculo de ninos y adultos)
         //salida-entrada #dias x valornoche
-        console.log(datosReserva);
         try {
             
             let datos_habitacion = await objServicioH.buscarHabitacionPorId(datosReserva.idHabitacion);
@@ -67,16 +66,21 @@ export class ControladorReserva{
             let numeroPersonas = datosReserva.numeroNinos+datosReserva.numeroAdultos;
             let entrada = new Date(datosReserva.fechaEntrada);
             let salida = new Date(datosReserva.fechaSalida);
+            const diffInDays = Math.floor((salida - entrada) / (1000 * 60 * 60 * 24));
             let costo = 0;
-            const diffInDays = Math.floor((salida - entrada) / (1000 * 60 * 60 * 24))+1;
             if(diffInDays>0){
                 //no programa ni el 300 ni el 500
                 //full comillas por que es un json y se pone en ambos lugares , aunque no es obligatorio
-                costo = Number(valorNoche)*Number(diffInDays);
                 if(maxPerson>= numeroPersonas){
+                    console.log(datos_habitacion.valorNoche,diffInDays)
+                    costo = Number(datos_habitacion.valorNoche)*Number(diffInDays);
+                    datosReserva.costoReserva = costo;
+                    console.log(datosReserva);
+
+                    await objReserva.agregarReserva(datosReserva)
                     response.status(200).json({
                         "mensaje" : "exito Agregando la reserva",
-                        "datos" : null,
+                        "datos" : datosReserva,
                         "estado" : true
                     })
                 }else{
